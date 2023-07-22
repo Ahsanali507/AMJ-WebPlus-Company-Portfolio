@@ -1,11 +1,14 @@
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
+import "../css/contact.css";
+// import "../js/contactjs.js";
 
 import { styles } from "../styles";
 import { EarthCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
+
 
 const Contact = () => {
   const formRef = useRef();
@@ -67,6 +70,35 @@ const Contact = () => {
       );
   };
 
+  const handleValid=()=>{
+
+    const nametxt=document.getElementById('nameText');
+    const emailtxt=document.getElementById('emailText');
+  
+    let nameValid=document.getElementById('nameValid');
+    let emailValid=document.getElementById('emailValid');
+  
+    let regx=/^([_\-a-zA-Z0-9]+)@([_\-a-zA-Z0-9]+)\.([\.a-zA-Z]){3,7}$/;
+    //let regx=/^[a-zA-Z0-9.! #$%&'*+/=? ^_`{|}~-]+@[a-zA-Z0-9-]+(?:\. [a-zA-Z0-9-]+)*$/;
+    let str=emailtxt.value;
+    
+    
+    if(nametxt.value==""){
+        nameValid.innerText="Please enter valid name";
+        // document.getElementById('btn-send').disabled=true;
+    }
+    if(!regx.test(str)){
+      emailValid.innerText="Please enter valid email";
+      // document.getElementById('btn-send').disabled=true;
+    }
+    else{
+      nameValid.innerText="";
+      // document.getElementById('btn-send').disabled=false;
+      emailValid.innerText="";
+      // document.getElementById('btn-send').disabled=false;
+    }
+  };
+
   return (
     <div
       className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}
@@ -90,9 +122,11 @@ const Contact = () => {
               name='name'
               value={form.name}
               onChange={handleChange}
+              id="nameText"
               placeholder="What's your good name?"
-              className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+              className='bg-tertiary py-4 px-6 form-control placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
             />
+            <small id="nameValid" className="form-text text-muted invalid-feedback" style={{color:"red"}}></small>
           </label>
           <label className='flex flex-col'>
             <span className='text-white font-medium mb-4'>Your email</span>
@@ -100,10 +134,12 @@ const Contact = () => {
               type='email'
               name='email'
               value={form.email}
+              id="emailText"
               onChange={handleChange}
               placeholder="What's your web address?"
-              className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+              className='bg-tertiary py-4 px-6 form-control placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
             />
+            <small id="emailValid" className="form-text text-muted invalid-feedback" style={{color:"red"}}></small>
           </label>
           <label className='flex flex-col'>
             <span className='text-white font-medium mb-4'>Your Message</span>
@@ -111,6 +147,7 @@ const Contact = () => {
               rows={7}
               name='message'
               value={form.message}
+              id="msgText"
               onChange={handleChange}
               placeholder='What you want to say?'
               className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
@@ -119,7 +156,9 @@ const Contact = () => {
 
           <button
             type='submit'
-            className='bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary'
+            id="btn-send"
+            onClick={handleValid}
+            className='bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary btn-send'
           >
             {loading ? "Sending..." : "Send"}
           </button>

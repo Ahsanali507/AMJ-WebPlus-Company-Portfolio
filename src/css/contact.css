@@ -1,0 +1,20 @@
+.btn-send{
+    transition: 0.4s;
+}
+.btn-send:hover{
+    background-color: #915EFF;
+}
+a{
+    transition: 0.2s;
+}
+a:hover{
+    border-bottom: 4px solid #915EFF;
+    color: #915EFF;
+}
+.company-name{
+    transition: 0.2s;
+}
+.company-name:hover{
+    border-bottom: 4px solid #915EFF;
+    color: #915EFF;
+}
