@@ -18,3 +18,10 @@ a:hover{
     border-bottom: 4px solid #915EFF;
     color: #915EFF;
 }
+h2{
+    transition: 0.2s;
+}
+h2:hover{
+    color: #915EFF;
+    border-bottom: 4px solid #915EFF;
+}
