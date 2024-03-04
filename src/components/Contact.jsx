@@ -79,16 +79,16 @@ const Contact = () => {
     let emailValid=document.getElementById('emailValid');
   
     let regx=/^([_\-a-zA-Z0-9]+)@([_\-a-zA-Z0-9]+)\.([\.a-zA-Z]){3,7}$/;
-    //let regx=/^[a-zA-Z0-9.! #$%&'*+/=? ^_`{|}~-]+@[a-zA-Z0-9-]+(?:\. [a-zA-Z0-9-]+)*$/; this is for corrections
+    //let regx=/^[a-zA-Z0-9.! #$%&'*+/=? ^_`{|}~-]+@[a-zA-Z0-9-]+(?:\. [a-zA-Z0-9-]+)*$/; regex
     let str=emailtxt.value;
     
     
     if(nametxt.value==""){
-        nameValid.innerText="Please enter valid name";
+        nameValid.innerText="Please enter valid name"; // if name is not valid
         // document.getElementById('btn-send').disabled=true;
     }
     if(!regx.test(str)){
-      emailValid.innerText="Please enter valid email";
+      emailValid.innerText="Please enter valid email"; // if email is not valid email
       // document.getElementById('btn-send').disabled=true;
     }
     else{
