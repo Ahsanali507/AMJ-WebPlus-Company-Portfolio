@@ -1,5 +1,5 @@
-let nametxt=document.getElementById('nameText');
-let emailtxt=document.getElementById('emailText');
+// let nametxt=document.getElementById('nameText');
+// let emailtxt=document.getElementById('emailText');
 
 
 
